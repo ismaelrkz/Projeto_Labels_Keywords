@@ -26,3 +26,6 @@ target/
 .gradle/
 build/
 *.log
+
+# Ignorar arquivos do projeto que contêm senhas ou credenciais
+Labels_Keywords/src/main/resources/application.properties
