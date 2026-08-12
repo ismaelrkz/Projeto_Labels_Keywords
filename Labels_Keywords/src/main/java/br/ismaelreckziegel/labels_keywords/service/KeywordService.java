@@ -2,7 +2,7 @@ package br.ismaelreckziegel.labels_keywords.service;
 
 import br.ismaelreckziegel.labels_keywords.exceptions.ConflictException;
 import br.ismaelreckziegel.labels_keywords.exceptions.NotFoundException;
-import br.ismaelreckziegel.labels_keywords.model.Keyword;
+import br.ismaelreckziegel.labels_keywords.model.KeywordModel;
 import br.ismaelreckziegel.labels_keywords.repo.KeywordRepo;
 import org.springframework.stereotype.Service;
 
@@ -18,28 +18,28 @@ public class KeywordService {
         this.repoKeyword = repoKeyword;
     }
 
-    public Keyword create(Keyword newKeyword){
-        Optional<Keyword> existing = repoKeyword.findByKeyword(newKeyword.getKeyword());
+    public KeywordModel create(KeywordModel newKeywordModel){
+        Optional<KeywordModel> existing = repoKeyword.findByKeyword(newKeywordModel.getKeyword());
         if(existing.isPresent()){
             throw new ConflictException("Keyword already exists!");
         }
-        return repoKeyword.save(newKeyword);
+        return repoKeyword.save(newKeywordModel);
     }
 
-    public List<Keyword> readAll(){
+    public List<KeywordModel> readAll(){
         return repoKeyword.findAll();
     }
 
-    public Keyword readById(Integer id){
+    public KeywordModel readById(Integer id){
         return repoKeyword.findById(id).orElseThrow(() -> new NotFoundException("Keyword not found!"));
     }
 
-    public Keyword readByKeyword(String keyword){
+    public KeywordModel readByKeyword(String keyword){
         return repoKeyword.findByKeyword(keyword).orElseThrow(() -> new NotFoundException("Keyword not found!"));
     }
 
-    public Keyword updateById(Integer id, Keyword updatekeyword){
-        Keyword existing = repoKeyword.findById(id).orElseThrow(() -> new NotFoundException("Keyword not found!"));
+    public KeywordModel updateById(Integer id, KeywordModel updatekeyword){
+        KeywordModel existing = repoKeyword.findById(id).orElseThrow(() -> new NotFoundException("Keyword not found!"));
         existing.setKeyword(updatekeyword.getKeyword());
         return repoKeyword.save(existing);
     }

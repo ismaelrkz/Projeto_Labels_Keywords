@@ -1,3 +1,5 @@
+# Arquivo application.properties
+
 # Copie este arquivo para application.properties e preencha suas credenciais
 
 spring.application.name=Projeto_Labels_Keywords

@@ -1,12 +1,12 @@
 package br.ismaelreckziegel.labels_keywords.repo;
 
-import br.ismaelreckziegel.labels_keywords.model.Keyword;
+import br.ismaelreckziegel.labels_keywords.model.KeywordModel;
 import org.springframework.data.repository.ListCrudRepository;
 
 import java.util.Optional;
 
-public interface KeywordRepo extends ListCrudRepository<Keyword, Integer> {
+public interface KeywordRepo extends ListCrudRepository<KeywordModel, Integer> {
 
-    public Optional<Keyword> findByKeyword(String keyword);
+    public Optional<KeywordModel> findByKeyword(String keyword);
 
 }

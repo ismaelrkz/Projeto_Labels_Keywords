@@ -6,7 +6,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "tbl_label")
-public class Label {
+public class LabelModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +20,7 @@ public class Label {
     @JoinTable(name = "tbl_label_keyword",
             joinColumns = @JoinColumn(name = "tbl_label_id_label"),
             inverseJoinColumns = @JoinColumn(name = "tbl_keyword_id_keyword"))
-    private List<Keyword> keywords;
+    private List<KeywordModel> keywords;
 
     public Integer getId() {
         return id;
@@ -38,11 +38,11 @@ public class Label {
         this.label = label;
     }
 
-    public List<Keyword> getKeywords() {
+    public List<KeywordModel> getKeywords() {
         return keywords;
     }
 
-    public void setKeywords(List<Keyword> keywords) {
-        this.keywords = keywords;
+    public void setKeywords(List<KeywordModel> keywordModels) {
+        this.keywords = keywordModels;
     }
 }

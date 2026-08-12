@@ -1,6 +1,6 @@
 package br.ismaelreckziegel.labels_keywords.controller;
 
-import br.ismaelreckziegel.labels_keywords.model.Keyword;
+import br.ismaelreckziegel.labels_keywords.model.KeywordModel;
 import br.ismaelreckziegel.labels_keywords.service.KeywordService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,32 +19,32 @@ public class KeywordController {
     // ### MÉTODOS POST ####
 
     @PostMapping("/keyword")
-    public ResponseEntity<Keyword> createNewKeyword(@RequestBody Keyword newKeyword){
-        return ResponseEntity.status(201).body(service.create(newKeyword));
+    public ResponseEntity<KeywordModel> createNewKeyword(@RequestBody KeywordModel newKeywordModel){
+        return ResponseEntity.status(201).body(service.create(newKeywordModel));
     }
 
     // ### MÉTODOS GET ####
 
     @GetMapping("/keyword")
-    public ResponseEntity<List<Keyword>> readAllKeywords(){
+    public ResponseEntity<List<KeywordModel>> readAllKeywords(){
         return ResponseEntity.status(200).body(service.readAll());
     }
 
     @GetMapping("/keyword/searchid/{id}")
-    public ResponseEntity<Keyword> readById(@PathVariable Integer id){
+    public ResponseEntity<KeywordModel> readById(@PathVariable Integer id){
         return ResponseEntity.status(200).body(service.readById(id));
     }
 
     @GetMapping("/keyword/searchkeyword")
-    public ResponseEntity<Keyword> readByKeyword(@RequestParam String keyword){
+    public ResponseEntity<KeywordModel> readByKeyword(@RequestParam String keyword){
         return ResponseEntity.status(200).body(service.readByKeyword(keyword));
     }
 
     // ### MÉTODOS PUT ####
 
     @PutMapping("keyword/update/{id}")
-    public ResponseEntity<Keyword> updateKeyword(@PathVariable Integer id, @RequestBody Keyword updateKeyword){
-        return ResponseEntity.status(200).body(service.updateById(id, updateKeyword));
+    public ResponseEntity<KeywordModel> updateKeyword(@PathVariable Integer id, @RequestBody KeywordModel updateKeywordModel){
+        return ResponseEntity.status(200).body(service.updateById(id, updateKeywordModel));
     }
 
     // ### MÉTODOS DELETE ####

@@ -2,7 +2,7 @@ package br.ismaelreckziegel.labels_keywords.service;
 
 import br.ismaelreckziegel.labels_keywords.exceptions.ConflictException;
 import br.ismaelreckziegel.labels_keywords.exceptions.NotFoundException;
-import br.ismaelreckziegel.labels_keywords.model.Label;
+import br.ismaelreckziegel.labels_keywords.model.LabelModel;
 import br.ismaelreckziegel.labels_keywords.repo.KeywordRepo;
 import br.ismaelreckziegel.labels_keywords.repo.LabelRepo;
 import org.springframework.stereotype.Service;
@@ -20,30 +20,30 @@ public class LabelService{
         this.repoKeyword = repoKeyword;
     }
 
-    public Label create(Label newLabel){
-        Label existing = repoLabel.findByLabel(newLabel.getLabel());
+    public LabelModel create(LabelModel newLabelModel){
+        LabelModel existing = repoLabel.findByLabel(newLabelModel.getLabel());
         if(existing != null){
             throw new ConflictException("Label already exists!");
         }
-        return repoLabel.save(newLabel);
+        return repoLabel.save(newLabelModel);
     }
 
-    public List<Label> readAll(){
+    public List<LabelModel> readAll(){
         return repoLabel.findAll();
     }
 
-    public Label readById(Integer id){
+    public LabelModel readById(Integer id){
         return repoLabel.findById(id).orElseThrow(() -> new NotFoundException("Keyword not found!"));
     }
 
-    public List<Label> readByKeyword(String keyword){ // METODO que usa a relação associativa M:N para buscar Labels por Keyword
+    public List<LabelModel> readByKeyword(String keyword){ // METODO que usa a relação associativa M:N para buscar Labels por Keyword
         repoKeyword.findByKeyword(keyword).orElseThrow(() -> new NotFoundException("Keyword not found!"));
         return repoLabel.findByKeywordsKeyword(keyword);
     }
 
-    public Label updateById(Integer id, Label updateLabel){
-        Label existing = repoLabel.findById(id).orElseThrow(() -> new NotFoundException("Label not found!"));
-        existing.setLabel(updateLabel.getLabel());
+    public LabelModel updateById(Integer id, LabelModel updateLabelModel){
+        LabelModel existing = repoLabel.findById(id).orElseThrow(() -> new NotFoundException("Label not found!"));
+        existing.setLabel(updateLabelModel.getLabel());
         return repoLabel.save(existing);
     }
 

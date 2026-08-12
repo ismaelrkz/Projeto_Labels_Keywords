@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "tbl_keyword")
-public class Keyword {
+public class KeywordModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

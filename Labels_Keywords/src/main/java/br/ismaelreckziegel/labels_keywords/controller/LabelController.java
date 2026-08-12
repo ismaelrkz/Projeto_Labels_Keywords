@@ -1,6 +1,6 @@
 package br.ismaelreckziegel.labels_keywords.controller;
 
-import br.ismaelreckziegel.labels_keywords.model.Label;
+import br.ismaelreckziegel.labels_keywords.model.LabelModel;
 import br.ismaelreckziegel.labels_keywords.service.LabelService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,31 +20,31 @@ public class LabelController {
     // ### ----- MÉTODOS POST ----- ####
 
     @PostMapping("/label")
-    public ResponseEntity<Label> createNewLabel(@RequestBody Label newLabel){
-        return ResponseEntity.status(201).body(service.create(newLabel));
+    public ResponseEntity<LabelModel> createNewLabel(@RequestBody LabelModel newLabelModel){
+        return ResponseEntity.status(201).body(service.create(newLabelModel));
     }
 
     // ### ----- MÉTODOS GET ----- ####
 
     @GetMapping("/label")
-    public ResponseEntity<List<Label>> readAllLabels(){
+    public ResponseEntity<List<LabelModel>> readAllLabels(){
         return ResponseEntity.status(200).body(service.readAll());
     }
 
     @GetMapping("/label/searchid/{id}")
-    public ResponseEntity<Label> readById(@PathVariable Integer id){
+    public ResponseEntity<LabelModel> readById(@PathVariable Integer id){
         return ResponseEntity.status(200).body(service.readById(id));
     }
 
     @GetMapping("/label/searchlabel") // cliente: /label/searchlabel?keyword=xxx xxx xxx
-    public ResponseEntity<List<Label>> readByKeyword(@RequestParam String keyword){
+    public ResponseEntity<List<LabelModel>> readByKeyword(@RequestParam String keyword){
         return ResponseEntity.status(200).body(service.readByKeyword(keyword));
     }
 
     // ### ----- MÉTODOS PUT ----- ####
 
     @PutMapping("label/update/{id}")
-    public ResponseEntity<Label> updateLabel(@PathVariable Integer id, @RequestBody Label updateValue){
+    public ResponseEntity<LabelModel> updateLabel(@PathVariable Integer id, @RequestBody LabelModel updateValue){
         return ResponseEntity.status(200).body(service.updateById(id, updateValue));
     }
 

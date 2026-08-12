@@ -1,15 +1,14 @@
 package br.ismaelreckziegel.labels_keywords.repo;
 
-import br.ismaelreckziegel.labels_keywords.model.Label;
+import br.ismaelreckziegel.labels_keywords.model.LabelModel;
 import org.springframework.data.repository.ListCrudRepository;
 
 import java.util.List;
-import java.util.Optional;
 
-public interface LabelRepo extends ListCrudRepository<Label, Integer> {
+public interface LabelRepo extends ListCrudRepository<LabelModel, Integer> {
 
-    public Label findByLabel(String Label);
+    public LabelModel findByLabel(String Label);
 
-    public List<Label> findByKeywordsKeyword(String keyword);
+    public List<LabelModel> findByKeywordsKeyword(String keyword);
 
 }
