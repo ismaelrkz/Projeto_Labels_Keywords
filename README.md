@@ -50,8 +50,8 @@ O banco de dados relacional gerido pelo Hibernate é composto pela seguinte estr
 
 # Tecnologias Utilizadas
 
-- **Java**
-- **Spring Boot 3**
+- **Java 25**
+- **Spring Boot 4.1.0**
 - **Spring Web**
 - **Spring Data JPA & Hibernate**
 - **MySQL Driver**
