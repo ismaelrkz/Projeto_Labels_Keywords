@@ -33,7 +33,7 @@ public class LabelService{
     }
 
     public LabelModel readById(Integer id){
-        return repoLabel.findById(id).orElseThrow(() -> new NotFoundException("Keyword not found!"));
+        return repoLabel.findById(id).orElseThrow(() -> new NotFoundException("Label not found!"));
     }
 
     public List<LabelModel> readByKeyword(String keyword){ // METODO que usa a relação associativa M:N para buscar Labels por Keyword
@@ -49,7 +49,7 @@ public class LabelService{
 
     public void deleteById(Integer id){
         if(!repoLabel.existsById(id)){
-            throw new NotFoundException("Keyword not found!");
+            throw new NotFoundException("Label not found!");
         }
         repoLabel.deleteById(id);
     }

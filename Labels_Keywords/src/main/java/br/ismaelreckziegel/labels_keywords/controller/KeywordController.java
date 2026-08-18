@@ -35,7 +35,7 @@ public class KeywordController {
         return ResponseEntity.status(200).body(service.readById(id));
     }
 
-    @GetMapping("/keyword/searchkeyword")
+    @GetMapping("/keyword/searchkeyword") // cliente: /keyword/searchkeyword?keyword=xxx xxx xxx
     public ResponseEntity<KeywordModel> readByKeyword(@RequestParam String keyword){
         return ResponseEntity.status(200).body(service.readByKeyword(keyword));
     }
